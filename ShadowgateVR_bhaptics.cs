@@ -85,15 +85,23 @@ namespace ShadowgateVR_bhaptics
             }
         }
 
-        [HarmonyPatch(typeof(InventorySlotBelt), "GrabWith", new Type[] { typeof(Hand) })]
-        public class bhaptics_GetInventoryItem
+        [HarmonyPatch(typeof(Wand), "GrabWith", new Type[] { typeof(Hand) })]
+        public class bhaptics_GrabWand
         {
             [HarmonyPostfix]
-            public static void Postfix(InventorySlotBelt __instance, BeltItem ____itemInSlot)
+            public static void Postfix(Wand __instance, Hand hand)
             {
-                tactsuitVr.LOG("Grabbed: " + ____itemInSlot.name);
-                if (____itemInSlot.name == "Wand") tactsuitVr.GetItem(wandIsRight);
-                if (____itemInSlot.name == "Shield") tactsuitVr.GetItem(!wandIsRight);
+                tactsuitVr.GetItem(wandIsRight);
+            }
+        }
+
+        [HarmonyPatch(typeof(Shield), "GrabWith", new Type[] { typeof(Hand) })]
+        public class bhaptics_GrabShield
+        {
+            [HarmonyPostfix]
+            public static void Postfix(Shield __instance, Hand hand)
+            {
+                tactsuitVr.GetItem(!wandIsRight);
             }
         }
 
@@ -108,17 +116,33 @@ namespace ShadowgateVR_bhaptics
             }
         }
 
-        [HarmonyPatch(typeof(InventorySlotBelt), "RemoveItem", new Type[] { typeof(bool) })]
-        public class bhaptics_RemoveInventoryItem
+        /*
+        [HarmonyPatch(typeof(InventorySlotBelt), "GrabWith", new Type[] { typeof(Hand) })]
+        public class bhaptics_GetInventoryItem
         {
             [HarmonyPostfix]
             public static void Postfix(InventorySlotBelt __instance, BeltItem ____itemInSlot)
             {
-                tactsuitVr.LOG("Removed: " + ____itemInSlot.name);
-                if (____itemInSlot.name.Contains("Wand")) tactsuitVr.GetItem(wandIsRight);
-                if (____itemInSlot.name.Contains("Shield")) tactsuitVr.GetItem(!wandIsRight);
+                tactsuitVr.LOG("Grabbed: " + ____itemInSlot.name);
+                if (____itemInSlot.name == "Wand") tactsuitVr.GetItem(wandIsRight);
+                if (____itemInSlot.name == "Shield") tactsuitVr.GetItem(!wandIsRight);
             }
         }
+
+        [HarmonyPatch(typeof(InventorySlotBelt), "RemoveItem", new Type[] { typeof(bool) })]
+        public class bhaptics_RemoveInventoryItem
+        {
+            [HarmonyPostfix]
+            public static void Postfix(InventorySlotBelt __instance)
+            {
+                //tactsuitVr.LOG("Removed: " + ____itemInSlot.name);
+                tactsuitVr.LOG("Removed: " + __instance.ItemInSlot().name);
+                
+                if (__instance.ItemInSlot().name.Contains("Wand")) tactsuitVr.GetItem(wandIsRight);
+                if (__instance.ItemInSlot().name.Contains("Shield")) tactsuitVr.GetItem(!wandIsRight);
+            }
+        }
+        */
 
         [HarmonyPatch(typeof(Wand), "TriggerPress", new Type[] { typeof(bool) })]
         public class bhaptics_WandCast
@@ -144,6 +168,17 @@ namespace ShadowgateVR_bhaptics
             }
         }
 
+        [HarmonyPatch(typeof(Hand), "Teleported", new Type[] { })]
+        public class bhaptics_TeleportHand
+        {
+            [HarmonyPostfix]
+            public static void Postfix()
+            {
+                tactsuitVr.PlaybackHaptics("TeleportThrough");
+            }
+        }
+
+        /*
         [HarmonyPatch(typeof(LocomotionTeleport), "DoTeleport", new Type[] {  })]
         public class bhaptics_Teleport
         {
@@ -176,6 +211,6 @@ namespace ShadowgateVR_bhaptics
                 tactsuitVr.PlaybackHaptics("TeleportThrough");
             }
         }
-
+        */
     }
 }
