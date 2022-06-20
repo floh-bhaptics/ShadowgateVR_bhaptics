@@ -51,6 +51,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>D:\Games\Oculus\Software\zojoi-llc-shadowgate-vr-the-mines-of-mythrok\Shadowgate VR_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MyBhapticsTactsuit.cs" />
