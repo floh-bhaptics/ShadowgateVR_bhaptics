@@ -212,5 +212,26 @@ namespace ShadowgateVR_bhaptics
             }
         }
         */
+
+        [HarmonyPatch(typeof(Player), "OnOdinViewEnter", new Type[] { })]
+        public class bhaptics_EnterOdinView
+        {
+            [HarmonyPostfix]
+            public static void Postfix()
+            {
+                tactsuitVr.PlaybackHaptics("OdinViewEnter");
+            }
+        }
+
+        [HarmonyPatch(typeof(OdinView), "EndView", new Type[] { })]
+        public class bhaptics_ExitOdinView
+        {
+            [HarmonyPostfix]
+            public static void Postfix()
+            {
+                tactsuitVr.PlaybackHaptics("OdinViewExit");
+            }
+        }
+
     }
 }

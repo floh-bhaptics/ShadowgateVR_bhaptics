@@ -23,7 +23,7 @@ using MelonLoader;
 // Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
 [assembly: Guid("67f6630c-8484-43ac-b81b-601075c73d83")]
 
-[assembly: MelonInfo(typeof(ShadowgateVR_bhaptics.ShadowgateVR_bhaptics), "ShadowgateVR_bhaptics", "1.2.0", "Florian Fahrenberger")]
+[assembly: MelonInfo(typeof(ShadowgateVR_bhaptics.ShadowgateVR_bhaptics), "ShadowgateVR_bhaptics", "1.3.0", "Florian Fahrenberger")]
 [assembly: MelonGame("Zojoi", "Shadowgate VR")]
 
 // Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
@@ -36,5 +36,5 @@ using MelonLoader;
 // Sie können alle Werte angeben oder Standardwerte für die Build- und Revisionsnummern verwenden,
 // indem Sie "*" wie unten gezeigt eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.2.0")]
-[assembly: AssemblyFileVersion("1.2.0")]
+[assembly: AssemblyVersion("1.3.0")]
+[assembly: AssemblyFileVersion("1.3.0")]
