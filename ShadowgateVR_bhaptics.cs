@@ -7,6 +7,9 @@ using MelonLoader;
 using HarmonyLib;
 using MyBhapticsTactsuit;
 
+[assembly: MelonInfo(typeof(ShadowgateVR_bhaptics.ShadowgateVR_bhaptics), "ShadowgateVR_bhaptics", "2.0.0", "Florian Fahrenberger")]
+[assembly: MelonGame("Zojoi", "Shadowgate VR")]
+
 namespace ShadowgateVR_bhaptics
 {
     public class ShadowgateVR_bhaptics : MelonMod
