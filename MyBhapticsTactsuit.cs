@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading;
 using MelonLoader;
 
+[assembly: MelonInfo(typeof(ShadowgateVR_bhaptics.ShadowgateVR_bhaptics), "ShadowgateVR_bhaptics", "1.3.0", "Florian Fahrenberger")]
+[assembly: MelonGame("Zojoi", "Shadowgate VR")]
+
+
 namespace MyBhapticsTactsuit
 {
     public class TactsuitVR

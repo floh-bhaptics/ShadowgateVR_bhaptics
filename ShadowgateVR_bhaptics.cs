@@ -14,9 +14,8 @@ namespace ShadowgateVR_bhaptics
         public static TactsuitVR tactsuitVr;
         public static bool wandIsRight = true;
 
-        public override void OnApplicationStart()
+        public override void OnInitializeMelon()
         {
-            base.OnApplicationStart();
             tactsuitVr = new TactsuitVR();
             tactsuitVr.PlaybackHaptics("HeartBeat");
         }
